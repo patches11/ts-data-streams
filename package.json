@@ -7,9 +7,10 @@
   "homepage": "https://github.com/patches11/ts-data-streams",
   "scripts": {
     "test": "yarn jest",
-    "build": "tsc src/index.ts --outDir dist/",
+    "build": "tsc",
     "start": "ts-node src/index.ts"
   },
+  "files": ["dist/**/*"],
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "@types/node-fetch": "^2.6.2",
