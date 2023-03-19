@@ -13,6 +13,20 @@
   "files": [
     "dist/**/*"
   ],
+  "keywords": [
+    "promise",
+    "async",
+    "streaming",
+    "stream-data-processing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patches11/ts-data-streams"
+  },
+  "author": "Patrick Brown <patrick@patrickbrown.us>",
+  "bugs": {
+    "url": "https://github.com/patches11/ts-data-streams/issues"
+  },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/jest": "^29.4.0",
