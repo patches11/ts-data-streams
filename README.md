@@ -19,6 +19,8 @@ tick(1000, 1)
 #### PI
 
 ```typescript
+import { repeat } from "ts-data-streams"
+
 repeat(1)
     .reduce(([_, q, r, t, i]) => {
       let digit = ((i * BigInt(27) - BigInt(12)) * q + r * BigInt(5)) / (t * BigInt(5));
