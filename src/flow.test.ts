@@ -1,7 +1,7 @@
 import {describe, expect, test} from "@jest/globals";
 import {pushable, tick} from "./stream-builder-base";
 import {sleep} from "./utils";
-import {PartialStreamBuilderImpl, PartialStreamBuilderInitial} from "./stream";
+import {PartialStreamBuilderInitial} from "./partial-stream-builder";
 
 describe("stream", () => {
   describe("all streams", () => {

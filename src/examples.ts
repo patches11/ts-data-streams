@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 import { tick, repeat } from "./stream-builder-base";
 import { sleep } from "./utils";
-import { PartialStreamBuilderInitial } from "./stream";
+import { PartialStreamBuilderInitial } from "./partial-stream-builder";
 
 interface EarthquakeFeed {
   features: any[];

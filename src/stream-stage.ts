@@ -1,6 +1,4 @@
 import {GetLogic, NextLogic, StreamStage} from "./interfaces";
-import {pushable, PushableInputResult} from "./stream-builder-base";
-import {StreamBuilderBase, StreamBuilderImpl} from "./stream";
 
 export class Via<R, T> implements StreamStage<R, T> {
   getLogic: GetLogic<R, T>;
@@ -227,36 +225,3 @@ export class Reduce<R, T> implements StreamStage<R, T> {
 }
 
 
-
-export class AlsoTo<T> implements StreamStage<T, T> {
-  stages: StreamStage<any, any>[]
-  constructor(stages: StreamStage<any, any>[]) {
-    this.stages = stages;
-  }
-
-  getLogic = (next: NextLogic<T>) => {
-    const builder = this.stages.reduce<StreamBuilderBase<PushableInputResult<any>, any>>((builder, stage) => new StreamBuilderImpl(stage, builder), pushable<any>())
-
-    const {inputConfig: {push, initialReady}} = builder.runAndDiscard()
-    let alsoToReady = false
-
-    initialReady.then(() => {
-      alsoToReady = true
-    })
-
-    const onPush = async (t: T) => {
-      if (alsoToReady) {
-        alsoToReady = false
-        push(t).then(() => {
-          alsoToReady = true
-        })
-      }
-      await next.push(t);
-    };
-
-    return {
-      onPush,
-      initialReady: next.initialReady,
-    };
-  };
-}
